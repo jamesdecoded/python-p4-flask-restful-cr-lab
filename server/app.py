@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_migrate import Migrate
 from models import db, Plant
 
 app = Flask(__name__)
@@ -10,6 +11,7 @@ app.json.compact = False
 
 # Initialize database
 db.init_app(app)
+migrate = Migrate(app, db)
 
 
 # --------------------
